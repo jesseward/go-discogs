@@ -6,37 +6,37 @@ import (
 
 // https://www.discogs.com/developers/#page:database,header:database-release
 type Release struct {
-	Styles            []string         `json:"styles"`
-	Videos            []Video          `json:"videos"`
-	Series            []interface{}    `json:"series"`
-	Labels            []ReleaseLabel   `json:"labels"`
-	Community         Community        `json:"community"`
-	Year              int              `json:"year"`
-	Images            []Image          `json:"images"`
-	FormatQuantity    int              `json:"format_quantity"`
-	ID                int              `json:"id"`
-	Genres            []string         `json:"genres"`
-	Thumb             string           `json:"thumb"`
-	Extraartists      []ArtistResource `json:"extraartists"`
 	Title             string           `json:"title"`
+	ID                int              `json:"id"`
 	Artists           []ArtistResource `json:"artists"`
-	DateChanged       string           `json:"date_changed"`
-	MasterID          int              `json:"master_id"`
-	Tracklist         []Track          `json:"tracklist"`
-	Status            string           `json:"status"`
-	ReleasedFormatted string           `json:"released_formatted"`
-	EstimatedWeight   int              `json:"estimated_weight"`
-	MasterURL         string           `json:"master_url"`
-	Released          string           `json:"released"`
-	DateAdded         string           `json:"date_added"`
-	Country           string           `json:"country"`
-	Notes             string           `json:"notes"`
-	Identifiers       []Identifier     `json:"identifiers"`
-	Companies         []Company        `json:"companies"`
-	URI               string           `json:"uri"`
-	Formats           []Format         `json:"formats"`
-	ResourceURL       string           `json:"resource_url"`
 	DataQuality       string           `json:"data_quality"`
+	Thumb             string           `json:"thumb"`
+	Community         Community        `json:"community"`
+	Companies         []Company        `json:"companies"`
+	Country           string           `json:"country"`
+	DateAdded         string           `json:"date_added"`
+	DateChanged       string           `json:"date_changed"`
+	EstimatedWeight   int              `json:"estimated_weight"`
+	Extraartists      []ArtistResource `json:"extraartists"`
+	FormatQuantity    int              `json:"format_quantity"`
+	Formats           []Format         `json:"formats"`
+	Genres            []string         `json:"genres"`
+	Identifiers       []Identifier     `json:"identifiers"`
+	Images            []Image          `json:"images"`
+	Labels            []ReleaseLabel   `json:"labels"`
+	MasterID          int              `json:"master_id"`
+	MasterURL         string           `json:"master_url"`
+	Notes             string           `json:"notes"`
+	Released          string           `json:"released"`
+	ReleasedFormatted string           `json:"released_formatted"`
+	ResourceURL       string           `json:"resource_url"`
+	Series            []interface{}    `json:"series"`
+	Status            string           `json:"status"`
+	Styles            []string         `json:"styles"`
+	Tracklist         []Track          `json:"tracklist"`
+	URI               string           `json:"uri"`
+	Videos            []Video          `json:"videos"`
+	Year              int              `json:"year"`
 }
 
 type ArtistResource struct {
