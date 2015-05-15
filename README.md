@@ -1,6 +1,9 @@
 # go-discogs
 A Go wrapper for the Discogs API.
 
+# How
+Note that go-discogs is a library and therefor does not export a main() function. 
+
 # Example usage
 ```go
 package main
