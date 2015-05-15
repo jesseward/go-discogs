@@ -1,5 +1,13 @@
 package discogs
 
+import (
+	"fmt"
+)
+
+type MasterService struct {
+	client *Client
+}
+
 // https://www.discogs.com/developers/#page:database,header:database-master-release-versions
 type Master struct {
 	Artists        []ArtistResource `json:"artists"`
@@ -19,6 +27,7 @@ type Master struct {
 	ResourceURL    string           `json:"resource_url"`
 }
 
+// https://www.discogs.com/developers/#page:database,header:database-master-release-versions
 type MasterVersions struct {
 	Pagination Paginate  `json:"pagination"`
 	Versions   []Version `json:"versions"`
@@ -37,7 +46,7 @@ type Version struct {
 	Title       string `json:"title"`
 }
 
-func (s *MasterService) Releases(id int) (*Master, *Response, error) {
+func (s *MasterService) Get(id int) (*Master, *Response, error) {
 	url := fmt.Sprintf("masters/%d", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)
@@ -56,8 +65,8 @@ func (s *MasterService) Releases(id int) (*Master, *Response, error) {
 	return master, resp, err
 }
 
-func (s *MasterVersions) Releases(id int) (*MasterVersions, *Response, error) {
-	url := fmt.Sprintf("masters/%d", id)
+func (s *MasterService) GetVersions(id int) (*MasterVersions, *Response, error) {
+	url := fmt.Sprintf("masters/%d/versions", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)
 

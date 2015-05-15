@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+type ArtistService struct {
+	client *Client
+}
+
 // https://www.discogs.com/developers/#page:database,header:database-artist
 type Artist struct {
 	ID             int      `json:"id"`
@@ -34,10 +38,6 @@ type Member struct {
 	Name        string `json:"name"`
 }
 
-type ArtistService struct {
-	client *Client
-}
-
 // https://www.discogs.com/developers/#page:database,header:database-artist-releases
 type ArtistReleases struct {
 	Pagination Paginate `json:"pagination"`
@@ -54,7 +54,7 @@ type ArtistReleases struct {
 	} `json:"releases"`
 }
 
-func (s *ArtistService) Get(id int) (*ArtistReleases, *Response, error) {
+func (s *ArtistService) GetReleases(id int) (*ArtistReleases, *Response, error) {
 
 	url := fmt.Sprintf("artists/%d/releases", id)
 

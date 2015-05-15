@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+type LabelService struct {
+	client *Client
+}
+
 type Label struct {
 	ID          int        `json:"id"`
 	Profile     string     `json:"profile"`
@@ -24,10 +28,6 @@ type Sublabel struct {
 	Name        string `json:"name"`
 }
 
-type LabelService struct {
-	client *Client
-}
-
 type LabelReleases struct {
 	Pagination Paginate `json:"pagination"`
 	Releases   []struct {
@@ -43,7 +43,7 @@ type LabelReleases struct {
 	} `json:"releases"`
 }
 
-func (s *LabelService) Releases(id int) (*LabelReleases, *Response, error) {
+func (s *LabelService) GetReleases(id int) (*LabelReleases, *Response, error) {
 	url := fmt.Sprintf("labels/%d/releases", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)
