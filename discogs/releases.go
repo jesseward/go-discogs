@@ -92,11 +92,7 @@ type Video struct {
 	URI         string `json:"uri"`
 }
 
-type ReleaseService struct {
-	client *Client
-}
-
-func (s *ReleaseService) Get(id int) (*Release, *Response, error) {
+func (s *DatabaseService) GetRelease(id int) (*Release, *Response, error) {
 	url := fmt.Sprintf("releases/%d", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)

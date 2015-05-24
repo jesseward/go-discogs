@@ -4,10 +4,6 @@ import (
 	"fmt"
 )
 
-type MasterService struct {
-	client *Client
-}
-
 // https://www.discogs.com/developers/#page:database,header:database-master-release-versions
 type Master struct {
 	Artists        []ArtistResource `json:"artists"`
@@ -46,7 +42,7 @@ type Version struct {
 	Title       string `json:"title"`
 }
 
-func (s *MasterService) Get(id int) (*Master, *Response, error) {
+func (s *DatabaseService) GetMaster(id int) (*Master, *Response, error) {
 	url := fmt.Sprintf("masters/%d", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)
@@ -65,7 +61,7 @@ func (s *MasterService) Get(id int) (*Master, *Response, error) {
 	return master, resp, err
 }
 
-func (s *MasterService) GetVersions(id int) (*MasterVersions, *Response, error) {
+func (s *DatabaseService) GetMasterVersions(id int) (*MasterVersions, *Response, error) {
 	url := fmt.Sprintf("masters/%d/versions", id)
 
 	req, err := s.client.NewRequest("GET", url, nil)

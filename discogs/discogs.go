@@ -28,10 +28,8 @@ type Client struct {
 	UserAgent string
 
 	// Services used for talking to different parts of the Discogs API.
-	Artist  *ArtistService
-	Label   *LabelService
-	Master  *MasterService
-	Release *ReleaseService
+	Database     *DatabaseService
+	UserIdentity *UserIdentityService
 }
 
 // NewClient returns a new Discogs API client.
@@ -42,10 +40,8 @@ func NewClient(httpClient *http.Client) *Client {
 	baseURL, _ := url.Parse(defaultBaseURL)
 
 	c := &Client{client: httpClient, BaseURL: baseURL, UserAgent: userAgent}
-	c.Artist = &ArtistService{client: c}
-	c.Label = &LabelService{client: c}
-	c.Master = &MasterService{client: c}
-	c.Release = &ReleaseService{client: c}
+	c.Database = &DatabaseService{client: c}
+	c.UserIdentity = &UserIdentityService{client: c}
 	return c
 }
 
